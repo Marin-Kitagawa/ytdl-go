@@ -24,7 +24,6 @@ const probeApiStatus = async (target, { logFailures = false } = {}) => {
     });
     if (!response.ok) {
       if (logFailures) {
-        // eslint-disable-next-line no-console
         console.debug(`[vite] Backend probe returned HTTP ${response.status}.`);
       }
       return false;
@@ -33,7 +32,6 @@ const probeApiStatus = async (target, { logFailures = false } = {}) => {
   } catch (error) {
     if (logFailures) {
       const errorType = error instanceof Error ? error.name : typeof error;
-      // eslint-disable-next-line no-console
       console.debug(`[vite] Backend probe request failed (${errorType}).`);
     }
     return false;
@@ -59,7 +57,7 @@ const resolveApiProxyTarget = async (explicitTarget, {
   let defaultURL;
   try {
     defaultURL = new URL(DEFAULT_API_PROXY_TARGET);
-  } catch (_) {
+  } catch {
     return DEFAULT_API_PROXY_TARGET;
   }
 
@@ -130,7 +128,6 @@ export default defineConfig(async ({ mode }) => {
       return;
     }
     const errorType = error instanceof Error ? error.message : typeof error;
-    // eslint-disable-next-line no-console
     console.debug(`[vite] Failed to refresh API proxy target (${errorType}).`);
   };
 
@@ -145,7 +142,6 @@ export default defineConfig(async ({ mode }) => {
   };
 
   if (!hasExplicitProxyTarget && apiProxyTarget !== DEFAULT_API_PROXY_TARGET) {
-    // eslint-disable-next-line no-console
     console.info(`[vite] Auto-detected backend at ${apiProxyTarget}. Set VITE_API_PROXY_TARGET to override.`);
   }
 

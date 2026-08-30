@@ -1,4 +1,4 @@
-import { For, Show } from 'solid-js';
+import { For } from 'solid-js';
 import Icon from '../Icon';
 import { WIDGET_REGISTRY } from './widgetRegistry';
 

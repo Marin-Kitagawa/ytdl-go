@@ -1,8 +1,6 @@
 import { createMemo, lazy, Suspense, createSignal, For, Show, onMount, createEffect, onCleanup } from 'solid-js';
-import { useNavigate, useSearchParams } from '@solidjs/router';
-import { useAppStore } from '../store/appStore';
+import { useSearchParams } from '@solidjs/router';
 import { useLibraryModel } from '../hooks/useLibraryModel';
-import { usePlayerController } from '../hooks/usePlayerController';
 import { useDownloadManager } from '../hooks/useDownloadManager';
 import { useDashboardDnD } from '../hooks/useDashboardDnD';
 import ActiveDownloads from './ActiveDownloads';
@@ -29,11 +27,8 @@ const DASHBOARD_LAYOUT_LEGACY_KEY_V2 = 'ytdl-go:dashboard-layout:v2';
 const DASHBOARD_LAYOUT_LEGACY_KEY_V1 = 'ytdl-go:dashboard-layout:v1';
 
 export default function DashboardView(props) {
-    const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
-    const { state } = useAppStore();
     const libraryModelHook = useLibraryModel();
-    const { openPlayer } = usePlayerController();
     const { startDownload } = useDownloadManager();
 
     // Derived state for edit mode from URL
@@ -48,37 +43,6 @@ export default function DashboardView(props) {
         }
         return libraryModelHook();
     });
-
-    const handleTabChange = (tab) => {
-        if (props.onTabChange) {
-            props.onTabChange(tab);
-            return;
-        }
-        const routes = {
-            'dashboard': '/',
-            'download': '/download',
-            'library': '/library',
-            'settings': '/settings'
-        };
-        if (routes[tab]) navigate(routes[tab]);
-    };
-
-    const handleDownload = (url) => {
-        if (props.onDownload) {
-            props.onDownload(url);
-        } else {
-            startDownload(url);
-        }
-    };
-
-    const handlePlay = (item) => {
-        if (props.onPlay) {
-            props.onPlay(item);
-        } else {
-            // Default to playing from all downloads if no specific queue provided via props
-            openPlayer(item, state.library.downloads);
-        }
-    };
 
     const [hasLoaded, setHasLoaded] = createSignal(false);
     const [isDrawerOpen, setIsDrawerOpen] = createSignal(false);
@@ -264,15 +228,8 @@ export default function DashboardView(props) {
                     // Migrate legacy format to new format
                     const migrated = migratePositions(parsed);
                     setWidgets(migrated);
-                    // Save in new format
-                    const v3Data = {
-                        version: 3,
-                        activeLayoutId: 'default',
-                        layouts: {
-                            'default': { name: 'Default', widgets: migrated, isFactory: false }
-                        }
-                    };
-                    // For now, just save array to keep simple until full preset support
+                    // Save in new format. Only the widget array is persisted
+                    // until full preset support lands.
                     localStorage.setItem(DASHBOARD_LAYOUT_KEY_V3, JSON.stringify(migrated));
                 }
             } catch (e) {

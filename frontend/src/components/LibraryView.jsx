@@ -252,7 +252,7 @@ export default function LibraryView(props) {
         ? result.message.trim()
         : 'Library refreshed. Legacy files without sidecar metadata may require re-download for full metadata and thumbnails.';
       setMetadataRetryMessage(message);
-    } catch (error) {
+    } catch {
       setMetadataRetryMessage('Retry failed. Please check backend logs and try again.');
     }
   };
@@ -627,19 +627,6 @@ export default function LibraryView(props) {
     if (!rows.some((entry) => entry.key === currentSelected)) {
       setSelectedDetailKey(firstKey);
     }
-  });
-
-  const selectedDetailItem = createMemo(() => {
-    const context = explorer();
-    if (context.kind !== 'items') {
-      return null;
-    }
-    return context.items.find((entry) => entry.mediaKey === selectedDetailKey()) || null;
-  });
-
-  const selectedDetailRow = createMemo(() => {
-    const rows = creatorDetailRows();
-    return rows.find((entry) => entry.key === selectedDetailKey()) || null;
   });
 
   const sectionCountLabel = createMemo(() => {

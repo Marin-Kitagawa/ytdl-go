@@ -18,7 +18,7 @@ const NetworkSettings = lazy(() => import('./routes/NetworkSettings'));
 function App() {
   const { initialize: initializeSavedPlaylists } = useSavedPlaylists();
   useLibrarySync();
-  const { listenForProgress } = useDownloadManager();
+  useDownloadManager();
 
   onMount(() => {
     void initializeSavedPlaylists();

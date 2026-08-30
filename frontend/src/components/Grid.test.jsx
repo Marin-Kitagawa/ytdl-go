@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { render, screen, cleanup } from '@solidjs/testing-library';
+import { render, cleanup } from '@solidjs/testing-library';
 import { Grid, GridItem } from './Grid';
 
 describe('Grid component', () => {

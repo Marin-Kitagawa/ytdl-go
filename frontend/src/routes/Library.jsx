@@ -1,4 +1,3 @@
-import { createMemo, onMount, onCleanup, createEffect } from 'solid-js';
 import { useAppStore } from '../store/appStore';
 import { useSavedPlaylists } from '../hooks/useSavedPlaylists';
 import { usePlayerController } from '../hooks/usePlayerController';

@@ -1,4 +1,3 @@
-import { createMemo } from 'solid-js';
 import { A } from '@solidjs/router';
 import Icon from '../Icon';
 import logo from '../../assets/logo.png';

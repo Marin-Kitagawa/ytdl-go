@@ -14,7 +14,6 @@ const Player = lazy(() => import('../components/Player'));
 export default function MainLayout(props) {
     const { state, setState } = useAppStore();
     const {
-        playerQueue,
         closePlayer,
         playNextInQueue
     } = usePlayerController();
