@@ -363,14 +363,10 @@ export function useDownloadManager() {
         }
     };
 
+    // Progress updates arrive implicitly via the global WebSocket and store,
+    // so there is no per-job listener to hand back.
     return {
         startDownload,
         cancelDownload,
-        // listenForProgress is now implicit via the global WebSocket and store
-
-        listenForProgress: (jobId) => {
-            // No-op, kept for compatibility if needed
-            console.log('Now listening for job:', jobId);
-        }
     };
 }
