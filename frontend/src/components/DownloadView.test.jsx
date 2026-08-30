@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@solidjs/testing-library';
 import DownloadView from './DownloadView';
-import { AppStoreProvider, useAppStore } from '../store/appStore';
-import { createRoot } from 'solid-js';
+import { AppStoreProvider } from '../store/appStore';
 
 describe('DownloadView component', () => {
     it('renders initial state correctly', () => {

@@ -1,4 +1,4 @@
-import { createSignal, createEffect, onMount, onCleanup, Show } from 'solid-js';
+import { Show } from 'solid-js';
 import Icon from './Icon';
 
 // Base layout constants
@@ -7,8 +7,6 @@ const ROW_HEIGHT = 80; // px
 const GAP = 12; // px
 
 export function Grid(props) {
-    let gridRef;
-
     // Use measured row height for square cells; fall back to default before measurement
     const rowHeight = () => props.rowHeight || ROW_HEIGHT;
     const tileSize = () => rowHeight() + GAP;
@@ -16,7 +14,6 @@ export function Grid(props) {
     return (
         <div 
             ref={(el) => {
-                gridRef = el;
                 if (props.ref) props.ref(el);
             }}
             class={`relative w-full${props.isEditMode ? ' select-none' : ''}`}

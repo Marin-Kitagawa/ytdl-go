@@ -189,7 +189,7 @@ export default function Player(props) {
     if (element.paused || element.ended) {
       try {
         await element.play();
-      } catch (error) {
+      } catch {
         return;
       }
     } else {

@@ -1,9 +1,7 @@
-import { For, Show, onCleanup, onMount, createMemo } from 'solid-js';
+import { For, Show } from 'solid-js';
 import Icon from './Icon';
-import Thumbnail from './Thumbnail';
-import DuplicateModal from './DuplicateModal';
-import { MAX_JOBS, MAX_TIMEOUT_SECONDS, useAppStore } from '../store/appStore';
-import { downloadStore, setDownloadStore } from '../store/downloadStore';
+import { useAppStore } from '../store/appStore';
+import { downloadStore } from '../store/downloadStore';
 import { useDownloadManager } from '../hooks/useDownloadManager';
 import {
   normalizeDownloadStatus,
