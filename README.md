@@ -133,6 +133,18 @@ ytdl-go -list-formats "https://youtube.com/watch?v=..."
 
 ---
 
+## 🏗️ Architecture
+
+The complete system architecture — CLI & Web UI entry points, the downloader pipeline, HTTP client stack, post-processing, storage, and external services:
+
+![ytdl-go architecture](img/architecture.svg)
+
+The diagram source lives at [`docs/architecture.d2`](docs/architecture.d2) and is rendered with [D2](https://d2lang.com):
+
+```bash
+d2 --layout elk docs/architecture.d2 img/architecture.svg
+```
+
 ## 📖 Documentation
 
 Detailed docs are available in two places — pick whichever you prefer:
