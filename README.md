@@ -21,6 +21,8 @@
 > **v0.2.0 Beta is out!** This release introduces the Web UI with a customizable dashboard, media library with built-in player, real-time download progress, multi-account support, queue & playlist management, and a responsive collapsible sidebar — all served from a single binary. The CLI works exactly as before.
 >
 > 📖 **Full documentation lives on the [docs site](https://lvcoi.github.io/ytdl-go/) and the [GitHub Wiki](https://github.com/lvcoi/ytdl-go/wiki)** — installation guides, CLI reference, architecture docs, and more.
+>
+> 🆕 **Inspired by yt-dlp, the CLI now also supports:** `--write-subs`/`--embed-subs`, `--sponsorblock-mark`/`--sponsorblock-remove` (with chapter embedding), `--download-archive` + `--playlist-items` + `--match-filter`, `--cookies` / `--cookies-from-browser`, `--proxy`, `--limit-rate` / `--sleep-requests`, `--write-thumbnail` / `--embed-thumbnail`, `--audio-format` / `--audio-quality`, `--live` recording, extended output template fields (`{upload_date}`, `{channel}`, `{view_count}`, `{duration_string}`, …), and `--update` / `--version`. See the [CLI reference](https://lvcoi.github.io/ytdl-go/reference/cli-options/).
 
 ---
 
@@ -37,6 +39,7 @@
 | 🎶 **Playlists & Queue** | Create playlists, assign songs to multiple lists, reorder queue |
 | 📱 **Responsive UI** | Collapsible sidebar, gallery/list view modes, mobile-friendly layout |
 | ⚙️ **Automation** | JSON output, quiet mode, custom output paths |
+| 🆕 **yt-dlp inspired** | Subtitles, SponsorBlock, chapters, download archive, match filters, cookies (file & browser), proxy, rate limiting, thumbnails, audio conversion, live recording, self-update |
 
 ---
 
