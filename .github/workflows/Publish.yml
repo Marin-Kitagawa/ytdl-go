@@ -8,7 +8,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  administration: write
 
 concurrency:
   group: pages
@@ -29,9 +28,6 @@ jobs:
           python-version: '3.11'
 
       - uses: actions/configure-pages@v4
-        with:
-          # Create the Pages site on first deployment if it doesn't exist yet.
-          enablement: true
 
       - name: Install zensical
         run: pip install zensical
