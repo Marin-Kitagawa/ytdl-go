@@ -58,3 +58,4 @@ jobs:
         with:
           files: ytdl-go-linux-*
           fail_on_unmatched_files: true
+          generate_release_notes: true
